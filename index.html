@@ -6,20 +6,566 @@
 
   <title>Amman Pazhamudir Nilayam | Fresh Fruits Since 2005</title>
 
-  <meta name="description" content="Amman Pazhamudir Nilayam in Vadavalli, Coimbatore. Fresh quality fruits, fruit boxes and convenient WhatsApp ordering. Serving since 2005.">
+  <meta name="description" content="Amman Pazhamudir Nilayam in Vadavalli, Coimbatore. Fresh quality fruits since 2005. Order fresh fruits on WhatsApp.">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #faf7f0;
+      color: #3d2925;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eadfce;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #741c2b;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .brand-name {
+      font-family: Georgia, serif;
+      font-size: 18px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #741c2b;
+    }
+
+    .whatsapp-btn {
+      background: #218739;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    .whatsapp-btn:hover {
+      background: #176c2c;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 24px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: #a57b20;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      color: #741c2b;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 650px;
+      color: #665650;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-block;
+      padding: 14px 23px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    .primary-btn {
+      background: #741c2b;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: #55131f;
+    }
+
+    .secondary-btn {
+      border: 1px solid #741c2b;
+      color: #741c2b;
+      background: white;
+    }
+
+    .secondary-btn:hover {
+      background: #741c2b;
+      color: white;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: #741c2b;
+      font-size: 20px;
+    }
+
+    .trust-item span {
+      font-size: 13px;
+      color: #766861;
+    }
+
+    .hero-card {
+      background: white;
+      border: 1px solid #eadfce;
+      border-radius: 30px;
+      padding: 25px;
+      box-shadow: 0 25px 60px rgba(70, 42, 25, 0.10);
+      text-align: center;
+    }
+
+    .hero-card img {
+      width: 100%;
+      max-width: 420px;
+      margin: auto;
+      border-radius: 20px;
+    }
+
+    .hero-card h3 {
+      margin-top: 18px;
+      color: #741c2b;
+      font-family: Georgia, serif;
+      font-size: 22px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 24px;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading span {
+      color: #a57b20;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 42px;
+      color: #741c2b;
+      margin: 8px 0;
+    }
+
+    .section-heading p {
+      color: #766861;
+    }
+
+    /* FRUITS */
+    .fruits-section {
+      background: white;
+    }
+
+    .fruit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+    }
+
+    .fruit-card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 24px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .fruit-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 40px rgba(70, 42, 25, 0.12);
+    }
+
+    .fruit-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .fruit-card-content {
+      padding: 20px 18px 24px;
+    }
+
+    .fruit-card h3 {
+      color: #741c2b;
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .fruit-card p {
+      color: #71635d;
+    }
+
+    /* BOXES */
+    .boxes-section {
+      background: #faf7f0;
+    }
+
+    .box-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .box-card {
+      background: white;
+      border: 1px solid #eadfce;
+      border-radius: 25px;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(70, 42, 25, 0.06);
+    }
+
+    .box-card.featured {
+      border: 2px solid #b38a2c;
+      transform: translateY(-8px);
+    }
+
+    .box-label {
+      color: #a57b20;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .box-card h3 {
+      color: #741c2b;
+      font-family: Georgia, serif;
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #741c2b;
+      font-size: 28px;
+      font-weight: 800;
+      margin: 15px 0;
+    }
+
+    .box-card p {
+      color: #71635d;
+      margin-bottom: 22px;
+    }
+
+    .box-note {
+      text-align: center;
+      margin-top: 25px;
+      color: #796c65;
+      font-size: 13px;
+    }
+
+    /* ABOUT */
+    .about-section {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: Georgia, serif;
+      color: #741c2b;
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .about-text p {
+      color: #665650;
+      margin-bottom: 16px;
+    }
+
+    .info-card {
+      background: #faf7f0;
+      border: 1px solid #eadfce;
+      border-radius: 25px;
+      padding: 32px;
+    }
+
+    .info-card h3 {
+      font-family: Georgia, serif;
+      color: #741c2b;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .info-row {
+      padding: 14px 0;
+      border-bottom: 1px solid #e7dccb;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-row strong {
+      display: block;
+      color: #741c2b;
+      margin-bottom: 4px;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: #741c2b;
+      color: white;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-container span {
+      color: #e6c96b;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .contact-container h2 {
+      font-family: Georgia, serif;
+      font-size: 45px;
+      margin: 10px 0 15px;
+    }
+
+    .contact-container p {
+      color: #f2ded8;
+      margin-bottom: 28px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .contact-buttons a {
+      padding: 14px 23px;
+      border-radius: 30px;
+      font-weight: 700;
+      background: white;
+      color: #741c2b;
+    }
+
+    .contact-buttons a:hover {
+      background: #e9dfd8;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #4c111d;
+      color: #f5e8e3;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    footer strong {
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+
+    footer p {
+      font-size: 13px;
+      margin-top: 6px;
+      color: #d9c2bb;
+    }
+
+    /* FLOATING WHATSAPP */
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      background: #218739;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+      z-index: 999;
+    }
+
+    .floating-whatsapp:hover {
+      background: #176c2c;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .fruit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .box-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .box-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        display: none;
+      }
+
+      .nav-container {
+        padding: 10px 16px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .hero {
+        padding: 55px 20px;
+        gap: 35px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .fruit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .section-heading h2,
+      .about-text h2 {
+        font-size: 34px;
+      }
+
+      .contact-container h2 {
+        font-size: 35px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- HEADER -->
-  <header class="header">
-    <div class="container nav">
+  <header>
+    <div class="nav-container">
 
       <a href="#home" class="brand">
-        <img src="assets/logo.jpg" alt="Amman Pazhamudir Nilayam">
-        <span>Amman Pazhamudir<br>Nilayam</span>
+        <img src="assets/logo.jpg" alt="Amman Pazhamudir Nilayam logo">
+        <span class="brand-name">Amman Pazhamudir Nilayam</span>
       </a>
 
       <nav>
@@ -31,11 +577,10 @@
       </nav>
 
       <a
-        class="nav-whatsapp"
+        class="whatsapp-btn"
         href="https://wa.me/919944519466"
-        target="_blank"
-      >
-        Order on WhatsApp
+        target="_blank">
+        WhatsApp
       </a>
 
     </div>
@@ -46,91 +591,89 @@
   <main id="home">
 
     <section class="hero">
-      <div class="container hero-grid">
 
-        <div>
-          <div class="eyebrow">
-            Serving Vadavalli, Coimbatore • Since 2005
-          </div>
+      <div>
 
-          <h1>Freshness you can trust.</h1>
-
-          <p class="hero-text">
-            Fresh, quality fruits selected with care for your family.
-            Visit our store or order conveniently on WhatsApp.
-          </p>
-
-          <div class="actions">
-
-            <a
-              class="btn primary"
-              href="https://wa.me/919944519466?text=Hello%20Amman%20Pazhamudir%20Nilayam,%20I%20would%20like%20to%20order%20fresh%20fruits."
-              target="_blank"
-            >
-              Order Fresh Fruits
-            </a>
-
-            <a
-              class="btn secondary"
-              href="https://www.google.com/maps/search/?api=1&query=Amman+Pazhamudir+Nilayam+Vadavalli+Coimbatore"
-              target="_blank"
-            >
-              Get Directions
-            </a>
-
-          </div>
-
-          <div class="trust">
-
-            <div>
-              <strong>Since 2005</strong>
-              <span>Trusted locally</span>
-            </div>
-
-            <div>
-              <strong>6:00 AM – 10:30 PM</strong>
-              <span>Open every day</span>
-            </div>
-
-            <div>
-              <strong>WhatsApp Orders</strong>
-              <span>99445 19466</span>
-            </div>
-
-          </div>
+        <div class="eyebrow">
+          Serving Vadavalli, Coimbatore • Since 2005
         </div>
 
+        <h1>
+          Freshness you can trust.
+        </h1>
 
-        <div class="hero-card">
+        <p>
+          Fresh, quality fruits selected with care for your family.
+          Visit our store or order conveniently on WhatsApp.
+        </p>
 
-          <img
-            src="assets/logo.jpg"
-            alt="Amman Pazhamudir Nilayam logo"
-          >
+        <div class="hero-buttons">
 
-          <h2>Quality • Freshness • Tradition</h2>
+          <a
+            class="primary-btn"
+            href="https://wa.me/919944519466?text=Hello%20Amman%20Pazhamudir%20Nilayam,%20I%20would%20like%20to%20order%20fresh%20fruits."
+            target="_blank">
+            Order Fresh Fruits
+          </a>
 
-          <p>
-            Fresh fruits for everyday needs, family orders and
-            special occasions.
-          </p>
+          <a
+            class="secondary-btn"
+            href="https://www.google.com/maps/search/?api=1&query=Amman+Pazhamudir+Nilayam+Vadavalli+Coimbatore"
+            target="_blank">
+            Get Directions
+          </a>
+
+        </div>
+
+        <div class="trust-row">
+
+          <div class="trust-item">
+            <strong>Since 2005</strong>
+            <span>Trusted locally</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>6:00 AM – 10:30 PM</strong>
+            <span>Open every day</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>WhatsApp Orders</strong>
+            <span>99445 19466</span>
+          </div>
 
         </div>
 
       </div>
+
+
+      <div class="hero-card">
+
+        <img
+          src="assets/logo.jpg"
+          alt="Amman Pazhamudir Nilayam logo">
+
+        <h3>
+          Quality • Freshness • Tradition
+        </h3>
+
+        <p>
+          Fresh fruits for everyday needs, family orders and special occasions.
+        </p>
+
+      </div>
+
     </section>
 
 
     <!-- FRUITS -->
-    <section class="section" id="fruits">
+    <section id="fruits" class="fruits-section">
 
-      <div class="container">
+      <div class="section-container">
 
         <div class="section-heading">
 
-          <div class="eyebrow">
-            Fresh every day
-          </div>
+          <span>Fresh every day</span>
 
           <h2>Our Fruits</h2>
 
@@ -141,148 +684,157 @@
         </div>
 
 
-        <div class="cards">
+        <div class="fruit-grid">
 
-          <!-- APPLES -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Apples"
-            >
+              src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Apples">
 
-            <h3>Apples</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Crisp and fresh varieties.
-            </p>
+              <h3>Apples</h3>
+
+              <p>
+                Crisp and fresh varieties.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- BANANAS -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Bananas"
-            >
+              src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Bananas">
 
-            <h3>Bananas</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Fresh everyday favourites.
-            </p>
+              <h3>Bananas</h3>
+
+              <p>
+                Fresh everyday favourites.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- GRAPES -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Grapes"
-            >
+              src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Grapes">
 
-            <h3>Grapes</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Sweet seasonal selections.
-            </p>
+              <h3>Grapes</h3>
+
+              <p>
+                Sweet seasonal selections.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- MANGOES -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Mangoes"
-            >
+              src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Mangoes">
 
-            <h3>Mangoes</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Seasonal favourites.
-            </p>
+              <h3>Mangoes</h3>
+
+              <p>
+                Seasonal favourites.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- ORANGES -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Oranges"
-            >
+              src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Oranges">
 
-            <h3>Oranges</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Fresh and juicy.
-            </p>
+              <h3>Oranges</h3>
+
+              <p>
+                Fresh and juicy.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- POMEGRANATES -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Pomegranates"
-            >
+              src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Pomegranates">
 
-            <h3>Pomegranates</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Selected for quality.
-            </p>
+              <h3>Pomegranates</h3>
+
+              <p>
+                Selected for quality.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- PINEAPPLES -->
-          <article class="card">
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=80"
-              alt="Fresh Pineapples"
-            >
+              src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh Pineapples">
 
-            <h3>Pineapples</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Fresh and flavourful.
-            </p>
+              <h3>Pineapples</h3>
+
+              <p>
+                Fresh and flavourful.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <!-- JACKFRUIT -->
-          <article class="card">
+          <!-- JACKFRUIT — LOCAL IMAGE -->
+          <article class="fruit-card">
 
             <img
-              class="fruit-image"
-              src="assets/jackfruit1.jpg1"
-              alt="Fresh Jackfruit"
-            >
+              src="assets/jackfruit.jpg"
+              alt="Fresh Jackfruit">
 
-            <h3>Jackfruit</h3>
+            <div class="fruit-card-content">
 
-            <p>
-              Seasonal local favourite.
-            </p>
+              <h3>Jackfruit</h3>
+
+              <p>
+                Seasonal local favourite.
+              </p>
+
+            </div>
 
           </article>
 
@@ -294,101 +846,112 @@
 
 
     <!-- FRUIT BOXES -->
-    <section class="section tinted" id="boxes">
+    <section id="boxes" class="boxes-section">
 
-      <div class="container">
+      <div class="section-container">
 
         <div class="section-heading">
 
-          <div class="eyebrow">
-            Easy family ordering
-          </div>
+          <span>Easy family ordering</span>
 
           <h2>Fruit Boxes</h2>
 
           <p>
-            Sample packages — confirm today's availability
-            and final price on WhatsApp.
+            Sample packages — confirm today's availability and final price on WhatsApp.
           </p>
 
         </div>
 
 
-        <div class="boxes">
+        <div class="box-grid">
 
+          <article class="box-card">
 
-          <!-- DAILY BOX -->
-          <div class="box">
+            <div class="box-label">
+              Everyday
+            </div>
 
-            <span>Everyday</span>
+            <h3>
+              Daily Fresh Box
+            </h3>
 
-            <h3>Daily Fresh Box</h3>
-
-            <strong>₹199*</strong>
+            <div class="price">
+              ₹199*
+            </div>
 
             <p>
               A convenient mix of fresh fruits for everyday needs.
             </p>
 
             <a
+              class="primary-btn"
               href="https://wa.me/919944519466?text=Hello,%20I%20would%20like%20to%20order%20the%20Daily%20Fresh%20Box."
-              target="_blank"
-            >
+              target="_blank">
               Order →
             </a>
 
-          </div>
+          </article>
 
 
-          <!-- FAMILY BOX -->
-          <div class="box featured">
+          <article class="box-card featured">
 
-            <span>Family</span>
+            <div class="box-label">
+              Family
+            </div>
 
-            <h3>Family Fruit Box</h3>
+            <h3>
+              Family Fruit Box
+            </h3>
 
-            <strong>₹399*</strong>
+            <div class="price">
+              ₹399*
+            </div>
 
             <p>
               A generous variety for the whole family.
             </p>
 
             <a
+              class="primary-btn"
               href="https://wa.me/919944519466?text=Hello,%20I%20would%20like%20to%20order%20the%20Family%20Fruit%20Box."
-              target="_blank"
-            >
+              target="_blank">
               Order →
             </a>
 
-          </div>
+          </article>
 
 
-          <!-- PREMIUM BOX -->
-          <div class="box">
+          <article class="box-card">
 
-            <span>Premium</span>
+            <div class="box-label">
+              Premium
+            </div>
 
-            <h3>Premium Fruit Box</h3>
+            <h3>
+              Premium Fruit Box
+            </h3>
 
-            <strong>₹699*</strong>
+            <div class="price">
+              ₹699*
+            </div>
 
             <p>
               Premium selections for gifting and special occasions.
             </p>
 
             <a
+              class="primary-btn"
               href="https://wa.me/919944519466?text=Hello,%20I%20would%20like%20to%20order%20the%20Premium%20Fruit%20Box."
-              target="_blank"
-            >
+              target="_blank">
               Order →
             </a>
 
-          </div>
+          </article>
 
         </div>
 
 
-        <p class="note">
+        <p class="box-note">
           *Sample prices. Update prices based on your actual daily products and rates.
         </p>
 
@@ -398,53 +961,84 @@
 
 
     <!-- ABOUT -->
-    <section class="section" id="about">
+    <section id="about" class="about-section">
 
-      <div class="container about">
+      <div class="section-container">
 
-        <div>
+        <div class="about-grid">
 
-          <div class="eyebrow">
-            Our story
+          <div class="about-text">
+
+            <div class="eyebrow">
+              Our story
+            </div>
+
+            <h2>
+              Serving fresh fruits since 2005.
+            </h2>
+
+            <p>
+              Amman Pazhamudir Nilayam is a local fruit store serving
+              customers in Vadavalli, Coimbatore.
+              We focus on freshness, quality and dependable service.
+            </p>
+
+            <p>
+              From everyday family fruit purchases to special orders,
+              we aim to make fresh fruit shopping simple and convenient.
+            </p>
+
           </div>
 
-          <h2>Serving fresh fruits since 2005.</h2>
 
-          <p>
-            Amman Pazhamudir Nilayam is a local fruit store
-            serving customers in Vadavalli, Coimbatore.
-            We focus on freshness, quality and dependable service.
-          </p>
+          <div class="info-card">
 
-          <p>
-            From everyday family fruit purchases to special orders,
-            we aim to make fresh fruit shopping simple and convenient.
-          </p>
-
-        </div>
+            <h3>
+              Store Information
+            </h3>
 
 
-        <div class="info-card">
+            <div class="info-row">
 
-          <h3>Store Information</h3>
+              <strong>
+                📍 Location
+              </strong>
 
-          <p>
-            📍 <strong>Location</strong><br>
-            Vadavalli, Coimbatore, Tamil Nadu
-          </p>
+              <span>
+                Vadavalli, Coimbatore, Tamil Nadu
+              </span>
 
-          <p>
-            🕐 <strong>Opening Hours</strong><br>
-            6:00 AM – 10:30 PM<br>
-            All days
-          </p>
+            </div>
 
-          <p>
-            📞 <strong>Phone / WhatsApp</strong><br>
-            <a href="tel:9944519466">
-              99445 19466
-            </a>
-          </p>
+
+            <div class="info-row">
+
+              <strong>
+                🕐 Opening Hours
+              </strong>
+
+              <span>
+                6:00 AM – 10:30 PM
+                <br>
+                All days
+              </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+              <strong>
+                📞 Phone / WhatsApp
+              </strong>
+
+              <span>
+                99445 19466
+              </span>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -454,48 +1048,39 @@
 
 
     <!-- CONTACT -->
-    <section class="section contact-section" id="contact">
+    <section id="contact" class="contact-section">
 
-      <div class="container contact">
+      <div class="contact-container">
 
-        <div>
+        <span>
+          Visit or order
+        </span>
 
-          <div class="eyebrow">
-            Visit or order
-          </div>
+        <h2>
+          Fresh fruits are just a message away.
+        </h2>
 
-          <h2>Fresh fruits are just a message away.</h2>
-
-          <p>
-            For today's fruit availability, prices, bulk orders
-            or delivery details, contact us directly.
-          </p>
-
-        </div>
+        <p>
+          For today's fruit availability, prices, bulk orders or delivery details,
+          contact us directly.
+        </p>
 
 
-        <div class="contact-actions">
+        <div class="contact-buttons">
 
           <a
-            class="btn primary"
             href="https://wa.me/919944519466"
-            target="_blank"
-          >
+            target="_blank">
             WhatsApp: 99445 19466
           </a>
 
           <a
-            class="btn secondary"
             href="https://www.google.com/maps/search/?api=1&query=Amman+Pazhamudir+Nilayam+Vadavalli+Coimbatore"
-            target="_blank"
-          >
+            target="_blank">
             Open in Google Maps
           </a>
 
-          <a
-            class="btn secondary"
-            href="tel:9944519466"
-          >
+          <a href="tel:+919944519466">
             Call the Store
           </a>
 
@@ -509,32 +1094,30 @@
 
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer>
 
-    <div class="container footer-inner">
+    <strong>
+      Amman Pazhamudir Nilayam
+    </strong>
 
-      <div>
-        <strong>Amman Pazhamudir Nilayam</strong><br>
-        Vadavalli, Coimbatore • Since 2005
-      </div>
+    <p>
+      Vadavalli, Coimbatore • Since 2005
+    </p>
 
-      <span>
-        6:00 AM – 10:30 PM • All days
-      </span>
-
-    </div>
+    <p>
+      6:00 AM – 10:30 PM • All days
+    </p>
 
   </footer>
 
 
   <!-- FLOATING WHATSAPP -->
   <a
-    class="floating-wa"
+    class="floating-whatsapp"
     href="https://wa.me/919944519466"
     target="_blank"
-    aria-label="Order on WhatsApp"
-  >
-    WhatsApp
+    aria-label="Order on WhatsApp">
+    WA
   </a>
 
 </body>
